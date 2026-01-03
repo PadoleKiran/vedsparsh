@@ -23,8 +23,8 @@ export default function ProductCard({ product }: { product: Product }) {
     <div className="group rounded-xl border border-zinc-200 bg-white overflow-hidden">
       <div className="relative">
         <Link href={`/product/${product.slug}`} className="block">
-          <div className="aspect-[4/3] relative">
-            <Image src={src} alt={product.title} fill unoptimized className="object-cover" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" onError={() => setSrc(fallbackImg)} />
+          <div className="aspect-[4/3] relative bg-white p-2 sm:p-3">
+            <Image src={src} alt={product.title} fill unoptimized className="object-contain" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" onError={() => setSrc(fallbackImg)} />
           </div>
         </Link>
         {product.discountPercent ? (
