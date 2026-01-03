@@ -59,8 +59,24 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div className="p-4 pt-0 flex gap-2">
-        <Button onClick={() => add({ id: product.id, title: product.title, price: product.price, qty: 1, image: product.images?.[0], slug: product.slug })} className="w-1/2">Add to cart</Button>
-        <Button variant="secondary" onClick={() => { add({ id: product.id, title: product.title, price: product.price, qty: 1, image: product.images?.[0], slug: product.slug }); router.push("/checkout"); }} className="w-1/2">Buy now</Button>
+        <Button
+          onClick={() =>
+            add({ id: product.id, title: product.title, price: product.price, qty: 1, image: typeof src === "string" ? src : (src?.src as string | undefined), slug: product.slug })
+          }
+          className="w-1/2"
+        >
+          Add to cart
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            add({ id: product.id, title: product.title, price: product.price, qty: 1, image: typeof src === "string" ? src : (src?.src as string | undefined), slug: product.slug });
+            router.push("/checkout");
+          }}
+          className="w-1/2"
+        >
+          Buy now
+        </Button>
       </div>
     </div>
   );

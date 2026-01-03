@@ -24,6 +24,9 @@ export const toCartItem = (p: Product): CartItem => ({
   title: p.title,
   price: p.price,
   qty: 1,
-  image: p.images?.[0],
+  image:
+    typeof p.images?.[0] === "string"
+      ? (p.images?.[0] as string)
+      : ((p.images?.[0] as any)?.src as string | undefined),
   slug: p.slug,
 });
