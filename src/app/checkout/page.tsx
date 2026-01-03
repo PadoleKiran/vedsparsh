@@ -6,8 +6,6 @@ import Button from "@/components/ui/Button";
 import { useCart } from "@/features/cart/useCart";
 import { formatCurrency } from "@/utils/format";
 
-export const metadata = { title: "Checkout" };
-
 export default function CheckoutPage() {
   const { items, totals } = useCart();
   const [payment, setPayment] = useState<"cod" | "online">("cod");

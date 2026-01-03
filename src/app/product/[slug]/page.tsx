@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
 import { getProductBySlug } from "@/services/catalog";
 import { formatCurrency } from "@/utils/format";
-import { toCartItem } from "@/features/cart/types";
-import { useCart } from "@/features/cart/useCart";
+import AddToCart from "@/components/product/AddToCart";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const product = await getProductBySlug(params.slug);
@@ -37,23 +35,11 @@ export default async function ProductDetail({ params }: { params: { slug: string
               <h1 className="text-2xl font-semibold text-zinc-900">{product.title}</h1>
               <div className="mt-2 text-brand-700 text-xl font-semibold">{formatCurrency(product.price)}</div>
               <p className="mt-4 text-zinc-700">{product.description}</p>
-              <AddToCart slug={params.slug} />
+              <AddToCart id={product.id} title={product.title} price={product.price} image={product.images?.[0]} slug={product.slug} />
             </div>
           </div>
         </Container>
       </section>
     </main>
-  );
-}
-
-function AddToCart({ slug }: { slug: string }) {
-  "use client";
-  const { add } = useCart();
-  return (
-    <Button onClick={async () => {
-      const { getProductBySlug } = await import("@/services/catalog");
-      const p = await getProductBySlug(slug);
-      if (p) add({ id: p.id, title: p.title, price: p.price, qty: 1, image: p.images?.[0], slug: p.slug });
-    }} className="mt-6">Add to Cart</Button>
   );
 }
