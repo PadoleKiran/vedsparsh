@@ -16,6 +16,13 @@ export const categories: Category[] = [
     type: "b2c",
   },
   {
+    id: "staples",
+    name: "Staples",
+    slug: "staples",
+    description: "Atta, jaggery, wood-pressed oils and more.",
+    type: "b2c",
+  },
+  {
     id: "b2b",
     name: "B2B Bulk Orders",
     slug: "b2b",

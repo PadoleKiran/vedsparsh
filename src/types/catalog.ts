@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 export type Category = {
   id: string;
   name: string;
@@ -12,10 +13,16 @@ export type Product = {
   slug: string;
   description: string;
   price: number;
+  mrp?: number;
   categoryId: string;
   unit?: string;
   attributes?: Record<string, string | number>;
-  images?: string[];
+  images?: Array<string | StaticImageData>;
   tags?: string[];
   active: boolean;
+  isNew?: boolean;
+  isBestSeller?: boolean;
+  discountPercent?: number;
+  couponText?: string;
+  saveText?: string;
 };

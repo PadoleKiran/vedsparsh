@@ -4,6 +4,7 @@ import Container from "@/components/ui/Container";
 import CategoryCard from "@/components/cards/CategoryCard";
 import ProductCard from "@/components/cards/ProductCard";
 import { getCategories, getFeaturedProducts } from "@/services/catalog";
+import heroImg from "../asse/oil.png";
 
 export const metadata = {
   title: "Organic & Spiritual Essentials",
@@ -27,7 +28,7 @@ export default async function Home() {
               </div>
             </div>
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
-              <Image src="https://images.unsplash.com/photo-1498654077810-12f82342376b?w=1600&q=80&auto=format&fit=crop" alt="VedSparsh" fill className="object-cover" />
+              <Image src={heroImg} alt="VedSparsh" fill className="object-cover" />
             </div>
           </div>
         </Container>
