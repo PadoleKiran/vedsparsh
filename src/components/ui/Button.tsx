@@ -6,11 +6,12 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 export default function Button({ className, variant = "primary", ...props }: Props) {
-  const base = "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-10 px-4 gap-2";
+  const base =
+    "inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500 disabled:opacity-50 disabled:pointer-events-none h-10 px-5 gap-2";
   const variants = {
-    primary: "bg-brand-600 text-white hover:bg-brand-700 focus-visible:ring-brand-600",
-    secondary: "bg-amber-100 text-amber-900 hover:bg-amber-200 focus-visible:ring-amber-400",
-    ghost: "bg-transparent hover:bg-zinc-100 text-zinc-900 focus-visible:ring-zinc-300",
+    primary: "bg-brand-600 text-white hover:bg-brand-700",
+    secondary: "bg-white text-brand-700 ring-1 ring-inset ring-brand-300 hover:bg-brand-50",
+    ghost: "bg-transparent hover:bg-brand-50 text-brand-700",
   } as const;
   return <button className={cn(base, variants[variant], className)} {...props} />;
 }
